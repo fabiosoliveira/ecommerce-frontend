@@ -1,12 +1,12 @@
 import Head from "next/head";
 
 import styles from "../styles/Home.module.css";
-import InputSearch from "./_components/InputSearch/InputSearch";
-import Pagination from "./_components/Pagination/Pagination";
-import List from "./_components/List/List";
+import InputSearch from "../components/InputSearch/InputSearch";
+import Pagination from "../components/Pagination/Pagination";
+import List from "../components/List/List";
 import { useState } from "react";
 import { DataResponseProducts } from "../lib/products";
-import useFetch from "./_hooks/use-fetch";
+import useFetch from "../hooks/use-fetch";
 
 const Home = () => {
   const [page, setPage] = useState(1);
