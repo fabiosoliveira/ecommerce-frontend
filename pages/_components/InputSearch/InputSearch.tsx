@@ -1,21 +1,25 @@
 import { ChangeEvent, useEffect } from "react";
-import type { NextPage } from "next";
 import { useState } from "react";
 import { BsSearch, BsXCircleFill } from "react-icons/bs";
 
 import styles from "./InputSearch.module.css";
 
-const InputSearch: NextPage = () => {
-  const [text, setText] = useState("");
-  const [colorIcon, setColorIcon] = useState("#9CA3AF");
+enum Color {
+  GRAY = "#9CA3AF",
+  RED = "#F87171",
+}
 
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => setText(e.target.value);
+const InputSearch = ({ text, setText }: any) => {
+  const [colorIcon, setColorIcon] = useState(Color.GRAY);
 
-  const clearSearch = () => setText("")
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) =>
+    setText(e.target.value);
 
-  useEffect(()=>{
-      text !== "" ? setColorIcon("#F87171") : setColorIcon("#9CA3AF")
-  }, [text])
+  const clearSearch = () => setText("");
+
+  useEffect(() => {
+    text !== "" ? setColorIcon(Color.RED) : setColorIcon(Color.GRAY);
+  }, [text]);
 
   return (
     <div className={styles.divBusca}>

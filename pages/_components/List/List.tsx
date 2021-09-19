@@ -1,13 +1,12 @@
-import { NextPage } from "next";
 import Image from "next/image";
 
 import styles from "./List.module.css";
 
 interface ItemProps {
-  description: string
+  description: string;
 }
 
-const Item = ({description}: ItemProps) => {
+const Item = ({ description }: ItemProps) => {
   return (
     <li>
       <div>
@@ -49,18 +48,20 @@ const Item = ({description}: ItemProps) => {
 };
 
 interface Product {
-  _id: string
-  name: string
+  _id: string;
+  name: string;
 }
 
 interface ListProps {
-  products: Product[]
+  products: Product[];
 }
 
-const List = ({products}: ListProps) => {
+const List = ({ products }: ListProps) => {
   return (
     <ul className={styles.list}>
-      {products?.map(product => <Item key={product._id} description={product.name} /> )}
+      {products?.map((product) => (
+        <Item key={product._id} description={product.name} />
+      ))}
     </ul>
   );
 };
