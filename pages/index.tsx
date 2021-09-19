@@ -1,9 +1,36 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import type { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import useSWR from 'swr'
 
-const Home: NextPage = () => {
+import styles from "../styles/Home.module.css";
+import InputSearch from "./_components/InputSearch";
+import Pagination from "./_components/Pagination";
+import List from "./_components/List";
+import { useState } from "react";
+import { DataResponseProducts, getProducts } from "../lib/products";
+
+export const getStaticProps: GetStaticProps = async () => {
+  const productsData = await getProducts(1, 5)
+  return {
+    props: {
+      productsData
+    }
+  }
+}
+
+interface HomeProps {
+  productsData: DataResponseProducts
+}
+
+const fetcher = (args: RequestInfo) => fetch(args).then(res => res.json())
+
+const Home = ({productsData}: HomeProps) => {
+  const [products, setProducts] = useState(productsData)
+
+  const { data, error } = useSWR(`https://ecommerce-backend-coteminas.herokuapp.com/api/products?page=1&size=3`, fetcher)
+  console.log(data)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,15 +39,28 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <main className={styles.main}>
-        <h1>Hello World!!!</h1>
-      </main>
+      <div className={styles.header}>
+        <h1 className={styles.titlePrimary}>mmartan</h1>
+        <InputSearch />
+      </div>
+      <div className={styles.titleSecondary}>
+        <h2>Lençol avulso</h2>
+      </div>
+      <div className={styles.body}>
+        <div className={styles.titleTerciary}>
+        <h3>{products.page.totalElements} PRODUTOS ENCONTRADOS</h3>
+        </div>
 
-      <footer className={styles.footer}>
-        
-      </footer>
+        <List products={products._embedded.products} />
+        <div className={styles.footer}>
+          <span>{products.page.size} produtos por página</span>
+          <Pagination />
+        </div>
+      </div>
+
+      <footer className={styles.footer}></footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

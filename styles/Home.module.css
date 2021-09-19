@@ -1,3 +1,52 @@
 .container {
-  margin: 80px;
+  display: flex;
+  margin: 20px 80px;
+  flex-direction: column;
+}
+
+
+.header{
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  justify-content: space-between;
+}
+
+.titlePrimary{
+  font-size: large;
+  color: #422B18;
+}
+
+.titleSecondary{
+  font-size: x-large;
+  padding: 0px 12px 0px 12px;
+  color: #514C71;
+  background-color: #e8e5f1;
+}
+
+.titleTerciary{
+  font-size: smaller;
+  color: #8E8CA3;
+}
+
+.titleTerciary h3{
+  display: inline-block;
+  border-bottom: solid #DFBE7F;
+}
+
+.body{
+  padding: 0px 130px 0px 130px;
+}
+
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0px 12px 0px
+}
+
+.footer span{
+  padding: 6px 12px;
+  color: #8E8CA3;
+    border: 1px solid #ddd;
 }

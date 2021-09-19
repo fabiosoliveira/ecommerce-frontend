@@ -1,0 +1,62 @@
+.list {
+  padding: 0;
+  list-style-type: none;
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  list-style-position: inside;
+  border: 1px solid rgb(238, 237, 237);
+  justify-content: space-between;
+  list-style-type: none;
+  list-style: none;
+}
+
+.image{
+  margin: 4px
+}
+
+.list li > div {
+  display: flex;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4px;
+  margin: 8px;
+}
+
+.description p {
+  margin: 0;
+}
+
+.descriptionProduct {
+  color: #4c4c4c;
+  font-size: small;
+}
+
+.typeProduct {
+  color: #8e8ca3;
+  font-size: x-small;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px;
+  margin: 0;
+  font-size: small;
+  color: #8e8ca3;
+}
+
+.previewPrice {
+  text-decoration: line-through;
+}
+
+.currentPrice {
+  color: #4c4c4c;
+}
