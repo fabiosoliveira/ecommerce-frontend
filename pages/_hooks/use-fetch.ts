@@ -4,7 +4,7 @@ import useDebounce from "./use-debounce";
 
 const fetcher = (args: RequestInfo) => fetch(args).then((res) => res.json());
 
-export function useFetch<T>(search: string, page: number) {
+export default function useFetch<T>(search: string, page: number) {
   const size = 10;
   const debouncedSearch = useDebounce(search, 500);
   const productsRef = useRef<T>();
