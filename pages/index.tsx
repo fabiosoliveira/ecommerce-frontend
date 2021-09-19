@@ -6,7 +6,7 @@ import Pagination from "./_components/Pagination/Pagination";
 import List from "./_components/List/List";
 import { useState } from "react";
 import { DataResponseProducts } from "../lib/products";
-import { useFetch } from "./_hooks/use-fetch";
+import useFetch from "./_hooks/use-fetch";
 
 const Home = () => {
   const [page, setPage] = useState(1);
