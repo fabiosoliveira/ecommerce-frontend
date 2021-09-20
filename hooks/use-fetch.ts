@@ -9,11 +9,13 @@ export default function useFetch<T>(search: string, page: number) {
   const debouncedSearch = useDebounce(search, 500);
   const productsRef = useRef<T>();
 
+  const URL_API = process.env.NEXT_PUBLIC_URL_API;
+
   const { data } = useSWR<T>(
     () =>
       debouncedSearch
-        ? `https://ecommerce-backend-coteminas.herokuapp.com/api/products?q=${debouncedSearch}&page=${page}&size=${size}`
-        : `https://ecommerce-backend-coteminas.herokuapp.com/api/products?page=${page}&size=${size}`,
+        ? `${URL_API}/api/products?q=${debouncedSearch}&page=${page}&size=${size}`
+        : `${URL_API}/api/products?page=${page}&size=${size}`,
     fetcher,
     {
       shouldRetryOnError: true,
