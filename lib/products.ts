@@ -1,13 +1,15 @@
-interface Page {
+export interface Page {
   size: number;
   totalElements: number;
   totalPages: number;
   number: number;
 }
 
-interface Product {
+export interface Product {
   _id: string;
   name: string;
+  previewPrice: string;
+  currentPrice: string;
 }
 
 export interface DataResponseProducts {

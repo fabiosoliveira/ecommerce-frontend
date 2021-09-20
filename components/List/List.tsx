@@ -1,12 +1,15 @@
 import Image from "next/image";
+import { Product } from "../../lib/products";
 
 import styles from "./List.module.css";
 
 interface ItemProps {
   description: string;
+  previewPrice: string;
+  currentPrice: string;
 }
 
-const Item = ({ description }: ItemProps) => {
+const Item = ({ description, previewPrice, currentPrice }: ItemProps) => {
   return (
     <li>
       <div>
@@ -38,19 +41,14 @@ const Item = ({ description }: ItemProps) => {
       </div>
       <div className={styles.price}>
         <p>
-          <span className={styles.previewPrice}>R$98,00 </span>
+          <span className={styles.previewPrice}>{previewPrice} </span>
           por
-          <span className={styles.currentPrice}> R$280,00</span>
+          <span className={styles.currentPrice}> {currentPrice}</span>
         </p>
       </div>
     </li>
   );
 };
-
-interface Product {
-  _id: string;
-  name: string;
-}
 
 interface ListProps {
   products: Product[];
@@ -60,7 +58,12 @@ const List = ({ products }: ListProps) => {
   return (
     <ul className={styles.list}>
       {products?.map((product) => (
-        <Item key={product._id} description={product.name} />
+        <Item
+          key={product._id}
+          description={product.name}
+          previewPrice={product.previewPrice}
+          currentPrice={product.currentPrice}
+        />
       ))}
     </ul>
   );
